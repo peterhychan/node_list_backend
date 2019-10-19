@@ -52,11 +52,11 @@ const BootcampSchema = new mongoose.Schema({
 		type:[String],
 		required: true,
 		enum: [
-			'Full-Stack Developer',
-			'Frond-end Developer',
-			'Data Scientist',
-			'UI/UX',
-			'Mobile Application Developer',
+			'Full-Stack Development',
+			'Front-end Development',
+			'Data Science',
+			'Computer Science',
+			'Mobile Application Development',
 			'Others'
 		]
 	},
