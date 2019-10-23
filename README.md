@@ -61,6 +61,9 @@ The server will be deployed on [DigitalOcean]().
 * [MongoDB](www.mongodb.com/Atlas‎) - NoSQL Database
 * [Postman](https://www.getpostman.com) - the tool for API testing
 
+## Note
+- You may want to rename "config/config.env.env" to "config/config.env", and updates the values inside for your own interest.
+
 ## Authors
 
 * [**Ho Yeung (Peter) Chan**](https://peterhychan.github.io/)
