@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser")
 const connectDB = require('./config/db')
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet")
+const xss = require("xss-clean")
 const errorHandler = require('./middleware/error')
 
 // Enable .env variables
@@ -45,6 +46,9 @@ app.use(mongoSanitize());
 
 // Apply Helmet for setting security headers
 app.use(helmet())
+
+// Apply xss-clean to avoid XSS
+app.use(xss())
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")))
