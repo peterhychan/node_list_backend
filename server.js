@@ -8,6 +8,7 @@ const fileupload =  require("express-fileupload")
 const cookieParser = require("cookie-parser")
 const connectDB = require('./config/db')
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require("helmet")
 const errorHandler = require('./middleware/error')
 
 // Enable .env variables
@@ -41,6 +42,9 @@ app.use(fileupload())
 
 // Santize data
 app.use(mongoSanitize());
+
+// Apply Helmet for setting security headers
+app.use(helmet())
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")))
