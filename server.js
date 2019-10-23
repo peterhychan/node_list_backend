@@ -10,6 +10,9 @@ const connectDB = require('./config/db')
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet")
 const xss = require("xss-clean")
+const rateLimit = require("express-rate-limit")
+const hpp = require("hpp")
+const cors = require("cors")
 const errorHandler = require('./middleware/error')
 
 // Enable .env variables
@@ -49,6 +52,19 @@ app.use(helmet())
 
 // Apply xss-clean to avoid XSS
 app.use(xss())
+
+// Limit the rate of usage of the API
+const limiter = rateLimit({
+	windowMs: 10*60*1000, // 10 mins
+	max: 120
+})
+app.use(limiter)
+
+// Avoid HTTP param pollution
+app.use(hpp())
+
+// Allows CORS operations
+app.use(cors())
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")))
