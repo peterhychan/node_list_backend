@@ -7,11 +7,14 @@ const User = require("../models/User")
 exports.protect = asyncHandler(async (req,res,next)=>{
 	let token 
 	if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+		// set token from Bearer token in header
 		token = req.headers.authorization.split(" ")[1]
 	}
-	//else if(req.cookies.token){
+	else if(req.cookies.token){
+		// set token from cookie
+		token = req.cookies.token
+	}
 
-	//}
 	//Ensure token exists
 	if(!token){
 		return next(new ErrorResponse("UNAUTHORIZED ROUTE".red,401))
