@@ -7,7 +7,7 @@ const sendEmail = async (options) => {
         port: process.env.SMTP_PORT,
         auth: {
             user: process.env.SMTP_EMAIL, 
-            pass: process.env.SMTP_PASSWORd 
+            pass: process.env.SMTP_PASSWORD
         }
     });
     // send mail with defined transport object
@@ -17,7 +17,7 @@ const sendEmail = async (options) => {
         subject: options.subject,
         text: options.text
     };
-    const info = await transporter.sendEmail(message)
+    const info = await transporter.sendMail(message)
     console.log('Message sent: %s', info.messageId);
 }
 

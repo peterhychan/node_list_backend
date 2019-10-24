@@ -34,8 +34,7 @@ exports.getCourse = asyncHandler(async (req,res,next)=>{
 	}
 	res.status(200).json({
 		success: true,
-		count: courses.length,
-		data: courses
+		data: course
 	})
 })
 
@@ -45,7 +44,7 @@ exports.getCourse = asyncHandler(async (req,res,next)=>{
 exports.addCourse = asyncHandler(async (req,res,next)=>{
 	req.body.bootcamp = req.params.bootcampId
 	res.body.user= req.user.id
-	const bootcamp = await Bootcamp.findById(req.params.bootcampId)
+	let bootcamp = await Bootcamp.findById(req.params.bootcampId)
 
 	if(!bootcamp){
 		return next(new ErrorResponse("The bootcamp requested is not found."), 404)
@@ -66,14 +65,14 @@ exports.addCourse = asyncHandler(async (req,res,next)=>{
 // @route PUT /api/v1/courses/:id
 // @access Private
 exports.updateCourse = asyncHandler(async (req,res,next)=>{
-	const course = await Course.findById(req.params.id)
+	let course = await Course.findById(req.params.id)
 
 	if(!course){
 		return next(new ErrorResponse("The course requested is not found."), 404)
 	}
 
 	// ensure the user is the owner of the course
-	if(bootcamp.user.toString() !== req.user.id && req.user.role !== "admin"){
+	if(course.user.toString() !== req.user.id && req.user.role !== "admin"){
 		return next(new ErrorResponse(`User #${req.user.id} Not Allowed to UPDATE the course #${course._id}`, 401))
 	}
 	
@@ -91,14 +90,14 @@ exports.updateCourse = asyncHandler(async (req,res,next)=>{
 // @route DELETE /api/v1/courses/:id
 // @access Private
 exports.deleteCourse = asyncHandler(async (req,res,next)=>{
-	course = await Course.findById(req.params.id)
+	let course = await Course.findById(req.params.id)
 
 	if(!course){
 		return next(new ErrorResponse("The course requested is not found."), 404)
 	}
 	
 	// ensure the user is the owner of the course
-	if(bootcamp.user.toString() !== req.user.id && req.user.role !== "admin"){
+	if(course.user.toString() !== req.user.id && req.user.role !== "admin"){
 		return next(new ErrorResponse(`User #${req.user.id} Not Allowed to DELETE the course #${course._id}`, 401))
 	}
 
