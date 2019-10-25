@@ -43,7 +43,7 @@ exports.getCourse = asyncHandler(async (req,res,next)=>{
 // @access Private
 exports.addCourse = asyncHandler(async (req,res,next)=>{
 	req.body.bootcamp = req.params.bootcampId
-	res.body.user= req.user.id
+	req.body.user= req.user.id
 	let bootcamp = await Bootcamp.findById(req.params.bootcampId)
 
 	if(!bootcamp){

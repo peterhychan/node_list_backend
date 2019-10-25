@@ -101,7 +101,7 @@
  	const user = await User.findOne({email: req.body.email})
 
  	if(!user){
- 		return next(new ErrorResponse("User not found.", 404))
+ 		return next(new ErrorResponse("User not found.".red, 404))
  	}
 
  	// fetch RESET token
@@ -127,13 +127,12 @@
  	}
 
 
- 	res.status(200)
- 		.json({ success: true, data: user})
+ 	res.status(200).json({ success: true, data: user})
  })
 
 
  // @description Reset password
- // @route 		 POST /api/v1/resetpassword/:resettoken
+ // @route 		 PUT /api/v1/resetpassword/:resettoken
  // @access		 Public
  exports.resetPassword = asyncHandler(async (req, res, next)=>{
  	// Fetch hashed token

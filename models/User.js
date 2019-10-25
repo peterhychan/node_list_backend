@@ -41,6 +41,7 @@ UserSchema.pre("save", async function(next){
 	if(!this.isModified("password")){
 		next()
 	}
+	// will only run when password is edited
 	const salt = await bcrypt.genSalt(10)
 	this.password = await bcrypt.hash(this.password, salt)
 })
@@ -69,6 +70,7 @@ UserSchema.methods.getResetPasswordToken = function(){
 		.digest("hex")
 	// set expiration 
 	this.resetPasswordExpire = Date.now() + bestBefore
+	return resetToken
 }
 
 module.exports = mongoose.model("User",UserSchema)

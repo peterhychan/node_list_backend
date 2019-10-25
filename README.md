@@ -2,6 +2,8 @@
 
 A full-featured backend server for querying and updating infomation about the coding bootcamps in the marketplace.
 
+The API documentation of the application is uploaded on [Postman](https://documenter.getpostman.com/view/9185103/SVzxXyqr?version=latest).
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development purposes. 

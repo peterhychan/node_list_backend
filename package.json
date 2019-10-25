@@ -1,15 +1,16 @@
 {
   "name": "node_list_backend",
   "version": "1.0.0",
-  "description": "Node.js Backend server for a course list",
+  "description": "Node.js Backend server for Bootcamps and their associated courses.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [
     "Node.js",
-    "Backend"
+    "Backend",
+    "API"
   ],
   "author": "Ho Yeung Chan",
   "license": "ISC",

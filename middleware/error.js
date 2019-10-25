@@ -8,14 +8,14 @@ const errorHandler = (err, req, res, next) => {
 
 	// Mongooose bad ObjectId
 	if(err.name === 'CastError'){
-		const message = `Resource Not Found`
+		const message = "Resource Not Found"
 		error = new ErrorResponse(message, 404)
 	}
 
 	// Mongoose repeated key
 	if(err.code === 11000){
 		const message = "The field provided is REPEATED."
-		error= new ErrorResponse(message, 400)
+		error = new ErrorResponse(message, 400)
 	}
 
 
