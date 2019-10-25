@@ -2,7 +2,9 @@
 
 A full-featured backend server for querying and updating infomation about the coding bootcamps in the marketplace.
 
-The API documentation of the application is uploaded on [Postman](https://documenter.getpostman.com/view/9185103/SVzxXyqr?version=latest).
+The API documentation is uploaded on [Postman](https://documenter.getpostman.com/view/9185103/SVzxXyqr?version=latest).
+
+The API is now deployed on [DigitalOcean](http://167.71.126.16/).
 
 ## Getting Started
 
